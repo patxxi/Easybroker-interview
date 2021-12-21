@@ -4,33 +4,19 @@
   <h1 class="title">Published Properties</h1>
 
   <section class="gallery">
-    <div class="card">
-      <img class="card__image" src="" alt="">
-      <div class="card__details">
-	<span>Public ID: </span>
-	<span>Title: </span>
-	<span>Property type: </span>
-	<span>Location: </span>
+    {% for property in properties %}
+    <a href="{% url 'easybroker:detail' property.public_id %}">
+      <div class="card">
+	<img class="card__image" src="{{ property.title_image_thumb }}" alt="{{property.title}}">
+	<div class="card__details">
+	  <span>Public ID: {{ property.public_id}} </span>
+	  <span>Title: {{property.title}} </span>
+	  <span>Property type: {{property.property_type}} </span>
+	  <span>Location: {{property.location}} </span>
+	</div>
       </div>
-    </div>
-    <div class="card">
-      <img class="card__image" src="" alt="">
-      <div class="card__details">
-	<span>Public ID: </span>
-	<span>Title: </span>
-	<span>Property type: </span>
-	<span>Location: </span>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card__image" src="" alt="">
-      <div class="card__details">
-	<span>Public ID: </span>
-	<span>Title: </span>
-	<span>Property type: </span>
-	<span>Location: </span>
-      </div>
-    </div>
+    </a>
+    {% endfor %}
 
   </section>
 </main>
