@@ -9,8 +9,6 @@ class TestProperties(TestCase):
 
         data = request.json()
 
-        print(data['content'][0])
-
         self.assertEqual(request.status_code, 200)
         self.assertEqual(len(data['content']), 15)
 

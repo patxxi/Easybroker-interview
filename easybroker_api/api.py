@@ -10,3 +10,11 @@ def get_properties():
     request = requests.get(url=api_url, headers=headers, params={'limit': 15})
 
     return request
+
+
+def get_property_detail(id):
+    api_url = f'https://api.stagingeb.com/v1/properties/{id}'
+    headers = {'X-Authorization': API_KEY}
+    request = requests.get(url=api_url, headers=headers)
+
+    return request
