@@ -5,7 +5,7 @@
 
   <section class="gallery">
     {% for property in properties %}
-    <a href="{% url 'easybroker:detail' property.public_id %}">
+    <a href="{% url 'properties:detail' property.public_id %}">
       <div class="card">
 	<img class="card__image" src="{{ property.title_image_thumb }}" alt="{{property.title}}">
 	<div class="card__details">

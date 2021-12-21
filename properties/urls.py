@@ -1,5 +1,5 @@
 from django.urls import path
-from easybroker import views
+from properties import views
 
 urlpatterns = [
     path(

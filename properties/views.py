@@ -4,7 +4,7 @@ from easybroker_api.api import get_properties
 
 
 class ListPropertiesView(TemplateView):
-    template_name = 'easybroker/index.html'
+    template_name = 'properties/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -14,4 +14,9 @@ class ListPropertiesView(TemplateView):
 
 
 class DetailPropertyView(TemplateView):
-    template_name = 'easybroker/property-detail.html'
+    template_name = 'properties/property-detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context
