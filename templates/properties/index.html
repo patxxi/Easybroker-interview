@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block container %}
+{% load static %}
 <main class="hero">
   <h1 class="title">Published Properties</h1>
 
@@ -7,7 +8,15 @@
     {% for property in page_obj %}
     <a href="{% url 'properties:detail' property.public_id %}">
       <div class="card">
+
+	{% if property.title_image_thumb %}
 	<img class="card__image" src="{{ property.title_image_thumb }}" alt="{{property.title}}">
+
+	{% else %}
+	<img class="card__image" src="{% static 'img/default-house.png' %}" alt="{{property.title}}">
+
+	{% endif %}
+
 	<div class="card__details">
 	  <span>Public ID: {{ property.public_id}} </span>
 	  <span>Title: {{property.title}} </span>

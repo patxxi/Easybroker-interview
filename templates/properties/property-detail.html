@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% block container %}
+{% load static %}
 
 <main class="property">
   <div class="details">
     <h1 class="property__title">{{property.title}}</h1>
     <div class="image-container">
+	{% if property.property_images %}
       <img class="property__image" src="{{property.property_images.0.url}}" alt="">
+
+	{% else %}
+	<img class="card__image" src="{% static 'img/default-house.png' %}" alt="{{property.title}}">
+
+
+	{% endif %}
     </div>
 
     <div class="info">
