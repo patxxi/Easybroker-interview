@@ -8,7 +8,9 @@ urlpatterns = [
     ),
     path(
         route='detail/<str:id>',
-        view=views.DetailPropertyView.as_view(),
+        view=views.FormContactView.as_view(),
         name='detail'
     )
+
 ]
+

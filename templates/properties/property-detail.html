@@ -1,5 +1,61 @@
 {% extends 'base.html' %}
 {% block container %}
-<h1>Hola mundo</h1>
+
+<main class="property">
+  <div class="details">
+    <h1 class="property__title">{{property.title}}</h1>
+    <div class="image-container">
+      <img class="property__image" src="{{property.property_images.0.url}}" alt="">
+    </div>
+
+    <div class="info">
+      <span> Public id: {{property.public_id}}
+      </span>
+      <p>
+	Description: {{property.description}}
+      </p>
+
+      <div class="room-details">
+	<span>{{property.property_type}}</span>
+	<span>{{property.bedrooms}} Dormitorios</span>
+
+	<span>{{property.bathrooms}} Baños</span>
+      </div>
+
+      <div class="location">
+	<div class="location-header">
+	  <span>
+	    Dirección
+	  </span>
+	  <a href=""> Arbrir en Google Maps</a>
+	</div>
+
+	<div class="location-section">
+	  <span>Name: </span>
+	  <span>{{property.location.name}}</span>
+	</div>
+
+	<div class="location-section">
+	  <span>Street: </span>
+	  <span>{{property.location.street}}</span>
+	</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container">
+
+    <form action="" class="form">
+      {% csrf_token %}
+      {{ form }}
+
+
+      <button class="submit-button">Submit</button>
+    </form>
+  </div>
+
+
+</main>
 
 {% endblock %}

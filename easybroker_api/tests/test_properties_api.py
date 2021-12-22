@@ -1,6 +1,8 @@
 from django.test import TestCase
 from easybroker_api.api import get_properties, get_property_detail
 
+import pprint
+
 
 class TestProperties(TestCase):
 
@@ -16,5 +18,6 @@ class TestProperties(TestCase):
         request = get_property_detail('EB-C0156')
         data = request.json()
 
+        pprint.pprint(data)
         self.assertEqual(request.status_code, 200)
         self.assertEqual(data['public_id'], 'EB-C0156')
