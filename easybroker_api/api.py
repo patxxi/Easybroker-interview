@@ -18,3 +18,12 @@ def get_property_detail(id):
     request = requests.get(url=api_url, headers=headers)
 
     return request
+
+
+def post_contact(body):
+    api_url = 'https://api.stagingeb.com/v1/contact_requests'
+    headers = {'X-Authorization': API_KEY}
+
+    request = requests.post(url=api_url, headers=headers, json=body)
+
+    return request
