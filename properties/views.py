@@ -1,19 +1,15 @@
-from django.views.generic import TemplateView, FormView
-
+from django.views.generic import ListView, FormView
 from django.urls import reverse_lazy
-from easybroker_api.api import get_properties, get_property_detail, post_contact
+from django.core.paginator import Paginator
 
+from easybroker_api.api import get_properties, get_property_detail, post_contact
 from properties.forms import ContactForm
 
 
-class ListPropertiesView(TemplateView):
+class ListPropertiesView(ListView):
     template_name = 'properties/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        data = get_properties().json()
-        context['properties'] = data['content']
-        return context
+    paginate_by = 15
+    queryset, request = get_properties()
 
 
 class FormContactView(FormView):

@@ -39,12 +39,15 @@ html {
 .hero .gallery .card {
   width: 100%;
   height: 100%;
-  outline: solid 2px black
+  border-radius: 25px;
+  -webkit-box-shadow: 3px 3px 13px 1px rgba(0,0,0,0.8);
+  box-shadow: 3px 3px 13px 1px rgba(0,0,0,0.8);
 }
 
 .gallery .card .card__image {
   width: 100%;
   height: 150px;
+  border-radius: 25px;
 }
 
 .gallery .card .card__details {
@@ -56,11 +59,35 @@ html {
   margin: 10px;
 }
 
+.pagination {
+  display: flex;
+  width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.pagination .setp-links {
+  margin: 0 auto;
+}
+
+.pagination span {
+  font-weight: bolder;
+}
+
+.pagination span a {
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  background-color: blue;
+  border-radius: 15px;
+}
+
 .property {
   display: flex;
   width: 100%;
   justify-content: space-around;
   margin-top: 100px;
+  padding-bottom: 20px;
 }
 
 .property .details {
@@ -82,6 +109,7 @@ html {
 
 .property .image-container .property__image {
   width: 100%;
+  height: 500px;
 }
 
 .property .details .info {
