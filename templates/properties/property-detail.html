@@ -11,10 +11,6 @@
     <div class="info">
       <span> Public id: {{property.public_id}}
       </span>
-      <p>
-      Description: {{property.description}}
-      </p>
-
       <div class="room-details">
 	<span>{{property.property_type}}</span>
 	<span>{{property.bedrooms}} Dormitorios</span>
@@ -27,7 +23,7 @@
 	  <span>
 	    Dirección
 	  </span>
-	  <a href=""> Arbrir en Google Maps</a>
+	  <a target="_blank" href="{{maps_url}}"> Arbrir en Google Maps</a>
 	</div>
 
 	<div class="location-section">
@@ -41,6 +37,14 @@
 	</div>
 
       </div>
+      <div class="description">
+	<h2>Description</h2>
+	<p>
+	{{property.description}}
+	</p>
+
+      </div>
+
     </div>
   </div>
 

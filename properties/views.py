@@ -5,6 +5,8 @@ from django.core.paginator import Paginator
 from easybroker_api.api import get_properties, get_property_detail, post_contact
 from properties.forms import ContactForm
 
+import pprint
+
 
 class ListPropertiesView(ListView):
     template_name = 'properties/index.html'
@@ -29,11 +31,13 @@ class FormContactView(FormView):
         property_id = path[-1]
         data = get_property_detail(property_id).json()
 
+        url = f'http://maps.google.com/?ie=UTF8&hq=&ll={data["location"]["latitude"]},{data["location"]["longitude"]}&z=13'
+
         context['property'] = data
+        context['maps_url'] = url
 
         return context
 
     def form_valid(self, form):
         form.send_message()
-        print(super().form_valid(form))
         return super().form_valid(form)

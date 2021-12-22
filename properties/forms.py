@@ -20,4 +20,3 @@ class ContactForm(forms.Form):
     def send_message(self):
         data = self.cleaned_data
         request = post_contact(data)
-        print(request.status_code)
