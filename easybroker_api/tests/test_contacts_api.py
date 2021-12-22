@@ -1,8 +1,11 @@
 from django.test import TestCase
-from easybroker_api.api import post_contact
+from easybroker_api.api import EasybrokerApi
 
 
 class TestContact(TestCase):
+
+    def setUp(self):
+        self.easybroker = EasybrokerApi()
 
     def test_post_contact(self):
         payload = {
@@ -13,6 +16,6 @@ class TestContact(TestCase):
             "message": "I'm interested in this property. Please contact me.",
             "source": "mydomain.com"
         }
-        request = post_contact(payload)
+        request = self.easybroker.post_contact(payload)
 
         self.assertEqual(request.status_code, 200)

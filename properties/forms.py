@@ -27,6 +27,7 @@ class ContactForm(forms.Form):
         """
         data = super().clean()
         data['source'] = self.request.get_host()
+        data['property_id'] = self.request.path.split('/')[-1]
         return data
 
     def send_message(self):

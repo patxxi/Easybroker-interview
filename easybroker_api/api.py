@@ -69,4 +69,7 @@ class EasybrokerApi:
 
         request = requests.post(url=api_url, headers=self.headers, json=body)
 
+        print(body)
+        print(request.status_code)
+
         return request
