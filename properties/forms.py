@@ -4,6 +4,11 @@ from easybroker_api.api import post_contact
 
 class ContactForm(forms.Form):
     def __init__(self, *args, **kwargs):
+        """
+        Override init from Forms to get request object
+        and it information
+        """
+
         self.request = kwargs.pop('request', None)
         super(ContactForm, self).__init__(*args, **kwargs)
 
@@ -13,10 +18,20 @@ class ContactForm(forms.Form):
     message = forms.CharField(required=True, max_length=255)
 
     def clean(self):
+        """
+        Ovverride clean method from Forms to add new properties
+        into data dict
+
+        Returns:
+            data: cleaned and modified data
+        """
         data = super().clean()
         data['source'] = self.request.get_host()
         return data
 
     def send_message(self):
+        """
+        Send the modified and cleaned data to the api
+        """
         data = self.cleaned_data
         request = post_contact(data)
