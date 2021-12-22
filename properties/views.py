@@ -2,7 +2,7 @@ from django.views.generic import ListView, FormView
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 
-from easybroker_api.api import get_properties, get_property_detail, post_contact
+from easybroker_api.api import EasybrokerApi
 from properties.forms import ContactForm
 
 
@@ -12,7 +12,8 @@ class ListPropertiesView(ListView):
     """
     template_name = 'properties/index.html'
     paginate_by = 15
-    queryset, request = get_properties()
+    easybroker = EasybrokerApi()
+    queryset, request = easybroker.get_properties()
 
 
 class FormContactView(FormView):
@@ -23,6 +24,7 @@ class FormContactView(FormView):
     template_name = 'properties/property-detail.html'
     form_class = ContactForm
     success_url = reverse_lazy('properties:home')
+    easybroker = EasybrokerApi()
 
     def get_form_kwargs(self):
         """
@@ -50,7 +52,7 @@ class FormContactView(FormView):
 
         path = self.request.path.split('/')
         property_id = path[-1]
-        property, request = get_property_detail(property_id)
+        property, request = self.easybroker.get_property_detail(property_id)
 
         map_url = f'http://maps.google.com/?ie=UTF8&hq=&ll={property["location"]["latitude"]},{property["location"]["longitude"]}&z=20'
 

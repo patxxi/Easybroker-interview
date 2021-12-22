@@ -1,5 +1,5 @@
 from django import forms
-from easybroker_api.api import post_contact
+from easybroker_api.api import EasybrokerApi
 
 
 class ContactForm(forms.Form):
@@ -8,8 +8,8 @@ class ContactForm(forms.Form):
         Override init from Forms to get request object
         and it information
         """
-
         self.request = kwargs.pop('request', None)
+        self.easybroker = EasybrokerApi()
         super(ContactForm, self).__init__(*args, **kwargs)
 
     name = forms.CharField(required=True)
@@ -34,4 +34,4 @@ class ContactForm(forms.Form):
         Send the modified and cleaned data to the api
         """
         data = self.cleaned_data
-        request = post_contact(data)
+        request = self.easybroker.post_contact(data)
