@@ -12,7 +12,7 @@
       <span> Public id: {{property.public_id}}
       </span>
       <p>
-	Description: {{property.description}}
+      Description: {{property.description}}
       </p>
 
       <div class="room-details">
@@ -46,12 +46,12 @@
 
   <div class="form-container">
 
-    <form action="" class="form">
+    <form action="{% url 'properties:detail' property.public_id %}" class="form" method="post">
       {% csrf_token %}
       {{ form }}
 
 
-      <button class="submit-button">Submit</button>
+      <button type="submit" class="submit-button">Submit</button>
     </form>
   </div>
 

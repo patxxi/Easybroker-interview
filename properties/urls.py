@@ -5,6 +5,7 @@ urlpatterns = [
     path(
         route='',
         view=views.ListPropertiesView.as_view(),
+        name='home'
     ),
     path(
         route='detail/<str:id>',
@@ -13,4 +14,3 @@ urlpatterns = [
     )
 
 ]
-

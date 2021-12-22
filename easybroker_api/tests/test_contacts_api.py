@@ -1,6 +1,5 @@
 from django.test import TestCase
 from easybroker_api.api import post_contact
-import pprint
 
 
 class TestContact(TestCase):
@@ -15,7 +14,5 @@ class TestContact(TestCase):
             "source": "mydomain.com"
         }
         request = post_contact(payload)
-
-        data = request.json()
 
         self.assertEqual(request.status_code, 200)
